@@ -2,8 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.3.1"
 
-
-
+gem "bootsnap", require: false
+gem "slim-rails"
+gem "devise", "~> 4.9"
 gem "importmap-rails"
 gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
@@ -27,7 +28,8 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -52,4 +54,3 @@ group :development do
   # gem "spring"
 end
 
-gem "slim-rails"
