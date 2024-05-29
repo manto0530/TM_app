@@ -1,13 +1,19 @@
-div id="#{dom_id task}"
-  p
-    strong Name:
-    =< task.name
-  p
-    strong Description:
-    =< task.description
-  p
-    strong Status:
-    =< task.status
-  p
-    strong User:
-    =< task.user_id
+div.text-center
+  div id="#{dom_id(task)}"
+    table.w-full.border.border-gray-200.rounded-lg.shadow-md.mt-4
+      thead.bg-gray-100
+        tr
+          th.py-3.px-4.text-left.font-semibold.text-gray-700 Name
+          th.py-3.px-4.text-left.font-semibold.text-gray-700 Description
+          th.py-3.px-4.text-left.font-semibold.text-gray-700 Status
+          th.py-3.px-4.text-left.font-semibold.text-gray-700 User
+          th.py-3.px-4.text-left.font-semibold.text-gray-700 Action
+      tbody.bg-white
+        tr
+          td.py-3.px-4.border.border-gray-200 = task.name
+          td.py-3.px-4.border.border-gray-200 = task.description
+          td.py-3.px-4.border.border-gray-200 = task.status
+          td.py-3.px-4.border.border-gray-200 = task.user_id
+          td.py-3.px-4.border.border-gray-200
+            = link_to "Show", task, class: "text-blue-600 hover:text-blue-900 mr-2 text-sm py-1 px-2 rounded-md"
+            = link_to "Edit", edit_task_path(task), class: "text-green-600 hover:text-green-900 mr-2"

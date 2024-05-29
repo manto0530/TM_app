@@ -1,10 +1,13 @@
-p style="color: green" = notice
+div.text-center
+  p style="color: green"
+    = notice
 
-== render @task
-
-div
-  => link_to "Edit this task", edit_task_path(@task)
-  '|
-  =< link_to "Back to tasks", tasks_path
-
-  = button_to "Destroy this task", @task, method: :delete
+  == render @task
+  br
+  div.text-center
+    = link_to "Edit this task", edit_task_path(@task), class: "inline-block bg-yellow-500 text-white font-semibold px-4 py-2 rounded hover:bg-yellow-600 mr-4"
+    |
+    = link_to "Back to tasks", tasks_path, class: "inline-block bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600"
+    br
+    br
+    = button_to "Destroy this task", @task, method: :delete, data: { confirm: "Are you sure?" }, class: "inline-block bg-red-500 text-white font-semibold px-4 py-2 rounded hover:bg-red-600"
