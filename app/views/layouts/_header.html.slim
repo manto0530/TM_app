@@ -18,9 +18,10 @@ nav[style="background-color: #FFFFFF;"]
               .flex.space-x-4
                 a.text-gray-300.hover:bg-gray-700.hover:text-white.rounded-md.px-3.py-2.text-sm.font-medium[href="#"]
                   | Dashboard
-                a.text-gray-300.hover:bg-gray-700.hover:text-white.rounded-md.px-3.py-2.text-sm.font-medium[href="#"]
-                  | Team
-                = link_to "Sign Out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700", role: "menuitem", tabindex: "-1"
+                a.text-gray-300.hover:bg-gray-700.hover:text-white.rounded-md.px-3.py-2.text-sm.font-medium[href="#{tasks_path}"]
+                  | Tasks
+                a.text-gray-300.hover:bg-gray-700.hover:text-white.rounded-md.px-3.py-2.text-sm.font-medium[href="#{destroy_user_session_path}"]
+                  | Sign Out
         - else
           .ml-4.flex.flex-grow.items-center.justify-end
             = link_to "Register", new_user_registration_path, class: "link"

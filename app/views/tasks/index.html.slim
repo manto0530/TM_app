@@ -1,16 +1,28 @@
-.w-full
-  - if notice.present?
-    p.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block#notice= notice
+p style="color: green" = notice
 
-  - content_for :title, "Boards"
+h1 Tasks
 
-  .flex.justify-between.items-center
-    h1.font-bold.text-4xl Task
-    = link_to "New Task", new_task_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium"
+table.w-full.border.border-gray-200.rounded-md.shadow-md.mt-4
+  thead.bg-gray-100
+    tr
+      th.py-3.px-4.text-left.font-semibold.text-gray-700 Title
+      th.py-3.px-4.text-left.font-semibold.text-gray-700 Description
+      th.py-3.px-4.text-left.font-semibold.text-gray-700 Status
+      th.py-3.px-4.text-left.font-semibold.text-gray-700 User Name
+      th.py-3.px-4.text-left.font-semibold.text-gray-700 Actions
 
-  #boards.min-w-full
+  tbody.bg-white#tasks
     - @tasks.each do |task|
-      == render task
-
-
-
+      tr
+        td.py-3.px-4.border.border-gray-200 = task.name
+        td.py-3.px-4.border.border-gray-200 =  truncate(task.description, length: 50)
+        td.py-3.px-4.border.border-gray-200 = task.status
+        td.py-3.px-4.border.border-gray-200 = task.user.name.present? ? task.user.name : task.user.id
+  
+        td.py-3.px-4.border.border-gray-200
+          = link_to "Show", task, class: "px-4 py-2 bg-yellow-500 text-white font-medium rounded-md hover:bg-yellow-600 mr-2"
+          = link_to "Edit", edit_task_path(task), class: "px-4 py-2 bg-blue-500 text-white font-medium rounded-md hover:bg-blue-600 mr-2"
+         
+br
+br
+= link_to "New task", new_task_path, class: "px-4 py-2 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 mt-4"
