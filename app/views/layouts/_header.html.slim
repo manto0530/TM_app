@@ -1,4 +1,4 @@
-nav[style="background-color: #FF6700;"]
+nav[style="background-color: #FFFFFF;"]
   .mx-auto.max-w-7xl.px-2.sm:px-6.lg:px-8
     .relative.flex.h-16.items-center.justify-between
       .absolute.inset-y-0.left-0.flex.items-center.sm:hidden
@@ -12,7 +12,7 @@ nav[style="background-color: #FF6700;"]
             path[stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"]
       .flex.flex-1.items-center.justify-center.sm:items-stretch.sm:justify-start
         .flex.flex-shrink-0.items-center
-          = image_tag "logo.png", class: "mx-auto h-8 w-auto"
+          = image_tag "amlogo.svg", class: "mx-auto h-8 w-auto"
         .hidden.sm:ml-6.sm:block
         - if user_signed_in?
               .flex.space-x-4
@@ -25,6 +25,7 @@ nav[style="background-color: #FF6700;"]
                 a.text-gray-300.hover:bg-gray-700.hover:text-white.rounded-md.px-3.py-2.text-sm.font-medium[href="#"]
                   | Calendar
               div
+                .flex.ml-auto.items-center
                 button#user-menu-button.relative.flex.rounded-full.bg-gray-800.text-sm.focus:outline-none.focus:ring-2.focus:ring-white.focus:ring-offset-2.focus:ring-offset-gray-800[type="button" aria-expanded="false" aria-haspopup="true"]
                   span.absolute.-inset-1.5
                   span.sr-only

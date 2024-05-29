@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  
   devise_for :users
 
   devise_scope :user do  
@@ -8,7 +9,9 @@ Rails.application.routes.draw do
  
   authenticated :user do
     root to: 'welcome#index', as: :authenticated_root
-  end
+    resources :tasks
+  
+    end
 
   unauthenticated do
     root to: 'home#index', as: :unauthenticated_root
