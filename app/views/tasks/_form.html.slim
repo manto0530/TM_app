@@ -1,31 +1,34 @@
 div.mx-auto.max-w-md
   = form_with(model: task, class: "contents") do |form|
     - if task.errors.any?
-      div#error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
+      #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
         h2
-          = pluralize(board.errors.count, "error")
-          |  prohibited this board from being saved:
-
+          = pluralize(task.errors.count, "error")
+          |  prohibited this task from being saved:
         ul
-          - board.errors.each do |error|
+          - task.errors.each do |error|
             li
               = error.full_message
 
-    div.my-5
-      = form.label :Title
+    .my-5
+      = form.label :name, "Title"
       = form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full"
 
-    div.my-5
+    .my-5
       = form.label :description
       = form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full"
 
-    div.my-5
+    .my-5
       = form.label :status, style: "display: block"
       = form.select :status, Task.statuses.keys.map { |status| [status.titleize, status] }, {}, class: 'block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full'
 
-    div.my-5[style="display: none;"]
+    .my-5
+      = form.label :deadline
+      = form.datetime_local_field :deadline, value: task.deadline&.in_time_zone('Asia/Kolkata')&.strftime('%Y-%m-%dT%H:%M'), class: "datetime block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full"
+
+    .my-5[style="display: none;"]
       = form.label :user_id, style: "display: block"
       = form.text_field :user_id, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full"
 
-    div.inline
+    .inline
       = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"
