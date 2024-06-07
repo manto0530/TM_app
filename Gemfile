@@ -56,3 +56,4 @@ end
 
 gem "slim-rails"
 gem 'flatpickr'
+gem 'sidekiq'
